@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_patient_tag_form">
+        <field name="name">patient.tag.form</field>
+        <field name="model">patient.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="color" widget="color_picker"/>
+                        <field name="active" widget="boolean_toggle"/>
+                        <field name="color_2" widget="color" groups="base.group_no_one"/>
+                        <field name="sequence"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_patient_tag_tree">
+        <field name="name">patient.tag.tree</field>
+        <field name="model">patient.tag</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                <field name="active"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_patient_tag" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Your first Appointment!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_patient_tags"
+              name="Patient tags"
+              action="action_patient_tag"
+              parent="patient_tag_master"
+              sequence="10"/>
+</odoo>
